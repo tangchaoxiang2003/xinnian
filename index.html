@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>小陈，新年快乐呀！</title>
+		<script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" type="text/css" href="mobile.css" media="screen and (max-width:720px)" />
+	</head>
+	<body>
+		<audio id="yy" controls="false" autoplay="true" loop="loop" style="display: none;">
+			<source src="Music/愿你余生漫长.mp3" type="audio/mpeg" />
+		</audio>
+		<audio id="ty" controls="false" autoplay="true" loop="loop" style="display: none;">
+			<source src="Music/太阳.mp3" type="audio/mpeg" />
+		</audio>
+		<!-- 加载 -->
+		<div class="bj">
+			<div class="bj-imgs">
+				<img onclick="screen()" style="border-radius: 10px;" class="Love" src="img/头像.png" >
+			</div>
+		</div>
+		<!-- 加载结束 -->
+		
+		
+		<!-- 内容 -->
+		<div class="centent">
+			<div class="centent-warp">
+				<div class="dc">
+					<div class="centent-top">
+						<div class="top-warp">
+							<video style="object-fit: cover;" id="video" class="video" autoplay="" loop="" muted="muted" style="background-image:url(>)">
+									<source src="img/ship2.mp4" type="video/mp4">
+							</video>
+						</div>
+					</div>
+					<div class="centent-center" id="text"></div>
+					<div onclick="getClass()" class="centent-bottom">点&nbsp;&nbsp;&nbsp;一&nbsp;&nbsp;&nbsp;下</div>
+				</div>
+			</div>
+		</div>
+		<!-- 内容结束 -->
+		
+		
+		<!-- 烟花 -->
+		<div id="container">
+		    <div id="fireworks"><img src="img/fireworks.png" alt=""></div>
+			<div id="fireworks"><img src="img/fireworks.png" alt=""></div>
+		    <div id="firecracker"><img src="img/firecracker.png" alt="" width="8px"></div>
+			<p class="zi">祝陈皓瑞同学新年快乐！</p>
+			<p class="zi1">钱“兔”似锦</p>
+			<p class="zi3">2023兔年大吉!</p>
+			<p class="zi2">拜拜咯！</p>
+		</div>
+		<!-- 烟花结束 -->
+	</body>
+	<script type="text/javascript">
+		let = document.getElementById("yy");
+		let = document.getElementById("ty");
+		ty.pause();
+		video.pause();
+		$(function() {
+			$(".Love").toggleClass("active");
+		})
+		
+		function screen () {
+			$('.bj').delay(100).fadeOut('slow');
+			yy.pause();
+			ty.play();
+			video.play();
+			$(".centent .centent-warp .dc").css({
+				opacity:"1",
+				transform:"scale(1)",
+			})
+			let divTyping = document.getElementById('text');
+			let i = 0,
+				timer = 0,
+				str = '&nbsp;&nbsp;祝陈皓瑞同学，在新的一年里，所想之事，顺心如意！诸邪避退，顺风顺水，扶摇直上，百事无忌，平安喜乐，万事胜意，开心快乐，有所爱亦被爱，一切都嘎嘎嘎嘎嘎嘎好！'
+			
+			function typing() {
+				if (i <= str.length) {
+					divTyping.innerHTML = str.slice(0, i++) + '_'
+					timer = setTimeout(typing, 180)
+				} else {
+					divTyping.innerHTML = str //结束打字,移除 _ 光标
+					clearTimeout(timer)
+				}
+			}
+			typing()
+		}
+		
+		function getClass () {
+			$(".centent .centent-top").css({
+				opacity:"0",
+				top:"-500px",
+			})
+			$(".centent .centent-center").css({
+				opacity:"0",
+			})
+			$(".centent .centent-bottom").css({
+				opacity:"0",
+				top:"500px",
+			})
+			$('.centent').delay(100).fadeOut('slow');
+			$("#firecracker").css({
+				transform: "scale(0)",
+				bottom: "60%",
+			})
+			setTimeout(function() {
+				$("#fireworks").css({
+					transform: "scale(1)",
+					opacity:"1",
+				})
+				setTimeout(function() {
+					$("#fireworks").css({
+						opacity:"0",
+					})
+				},1500)
+				$("#container .zi").css({
+					left:"200%",
+					zIndex: "3",
+				})
+				$("#container .zi1").css({
+					left:"180%",
+					zIndex: "3",
+				})
+				$("#container .zi3").css({
+					left:"180%",
+					zIndex: "3",
+				})
+				setTimeout(function() {
+					$("#container .zi2").css({
+						left:"160%",
+						zIndex: "3",
+					})
+				},2000)
+			},2000)
+		}
+	</script>
+</html>
